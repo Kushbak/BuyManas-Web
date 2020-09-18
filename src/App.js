@@ -33,7 +33,7 @@ class App extends React.Component {
 
     render() {
         if (cookies.get('id') && !this.props.initialized) {
-            // return <Preloader />
+            return <Preloader />
         }
         return (
             <div className="appWrapper">

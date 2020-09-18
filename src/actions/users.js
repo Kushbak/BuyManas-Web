@@ -44,55 +44,67 @@ export const toggleModalWindowEditPassword = () => ({
 // REDUX-THUNKS
 
 export const setUserData = (userId) => (dispatch) => {
-    usersApi.getUser(userId)
-        .then(response => {
-            dispatch(setUserDataSuccess(response.data));
-        });
+    try {
+        usersApi.getUser(userId)
+            .then(response => {
+                dispatch(setUserDataSuccess(response.data));
+            });
+    } catch (e) {
+        console.log('Произошла ошибка ' + e);
+    }
 }
 
 
 export const editProfile = (userId, profileData) => (dispatch) => {
-    dispatch(toggleIsFetching(true));
-    if (profileData.avatar) {
-        usersApi.newAvatar(userId, profileData.avatar)
-            .then(r => {
-                if (r.data.images[0].url) {
-                    usersApi.editProfile(userId, profileData)
-                        .then(r => {
-                            if (r.status === 200) {
-                                dispatch(toggleModalWindowEditProfile())
-                                dispatch(editProfileSuccess(r.data));
-                                dispatch(toggleIsFetching(false));
-                            }
-                        })
-                } else {
-                    dispatch(stopSubmit('editProfile', { _error: 'Произошла непредвиденная ошибка' }))
-                }
-            })
-    } else {
-        usersApi.editProfile(userId, profileData)
-            .then(r => {
-                if (r.status === 200) {
-                    dispatch(toggleModalWindowEditProfile())
-                    dispatch(editProfileSuccess(r.data));
-                    dispatch(toggleIsFetching(false));
-                } else {
-                    dispatch(stopSubmit('editProfile', { _error: 'Произошла непредвиденная ошибка' }))
-                }
-            })
+    try {
+        dispatch(toggleIsFetching(true));
+        if (profileData.avatar) {
+            usersApi.newAvatar(userId, profileData.avatar)
+                .then(r => {
+                    if (r.data.images[0].url) {
+                        usersApi.editProfile(userId, profileData)
+                            .then(r => {
+                                if (r.status === 200) {
+                                    dispatch(toggleModalWindowEditProfile())
+                                    dispatch(editProfileSuccess(r.data));
+                                    dispatch(toggleIsFetching(false));
+                                }
+                            })
+                    } else {
+                        dispatch(stopSubmit('editProfile', { _error: 'Произошла непредвиденная ошибка' }))
+                    }
+                })
+        } else {
+            usersApi.editProfile(userId, profileData)
+                .then(r => {
+                    if (r.status === 200) {
+                        dispatch(toggleModalWindowEditProfile())
+                        dispatch(editProfileSuccess(r.data));
+                        dispatch(toggleIsFetching(false));
+                    } else {
+                        dispatch(stopSubmit('editProfile', { _error: 'Произошла непредвиденная ошибка' }))
+                    }
+                })
+        }
+    } catch (e) {
+        console.log('Произошла ошибка ' + e);
     }
 }
 
 export const editPassword = (userId, passwordData) => (dispatch) => {
-    dispatch(toggleIsFetching(true));
-    usersApi.editPassword(userId, passwordData)
-        .then(r => {
-            if (r.status === 200) {
-                dispatch(toggleModalWindowEditPassword())
-                dispatch(editPasswordSuccess(r.data.password));
-                dispatch(toggleIsFetching(false));
-            } else{
-                dispatch(stopSubmit('editPassword', { _error: 'Произошла непредвиденная ошибка' }));
-            }
-        })
+    try {
+        dispatch(toggleIsFetching(true));
+        usersApi.editPassword(userId, passwordData)
+            .then(r => {
+                if (r.status === 200) {
+                    dispatch(toggleModalWindowEditPassword())
+                    dispatch(editPasswordSuccess(r.data.password));
+                    dispatch(toggleIsFetching(false));
+                } else {
+                    dispatch(stopSubmit('editPassword', { _error: 'Произошла непредвиденная ошибка' }));
+                }
+            })
+    } catch (e) {
+        console.log('Произошла ошибка ' + e);
+    }
 }

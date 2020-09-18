@@ -16,8 +16,13 @@ export const getCommentsSuccess = (comments) => ({
 // REDUX-THUNKS
 
 export const newComment = (commentData) => (dispatch) => {
-    postersApi.newComment(commentData)
+    try{
+        postersApi.newComment(commentData)
         .then(r => {
             dispatch(newCommentSuccess(r.data))
         })
+    } catch(e){
+        console.log('Произошла ошибка ' + e);
+    }
+    
 }

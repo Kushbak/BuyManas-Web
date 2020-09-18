@@ -1,5 +1,5 @@
 import { postersApi } from "../api/api"
-import { stopSubmit } from 'redux-form' 
+import { stopSubmit } from 'redux-form'
 
 
 // ACTION CREATORS
@@ -68,101 +68,132 @@ export const toggleIsGettingPost = (isGettingPosts) => ({
 // REDUX-THUNKS
 
 export const setPostByTitle = (title) => (dispatch) => {
-    if (title) {
-        postersApi.getPostsByTitle(title)
-            .then(response => {
-                if (response.data.length > 0) {
-                    dispatch(setPostsByTitleSuccess(response.data))
-                }
-            })
-    }
-    else {
-        dispatch(setPostsByTitleFailure())
+    try {
+        if (title) {
+            postersApi.getPostsByTitle(title)
+                .then(response => {
+                    if (response.data.length > 0) {
+                        dispatch(setPostsByTitleSuccess(response.data))
+                    }
+                })
+        }
+        else {
+            dispatch(setPostsByTitleFailure())
+        }
+    } catch (e) {
+        console.log('Произошла ошибка ' + e);
     }
 }
 
 export const setPosts = (page) => (dispatch) => {
-    postersApi.getPosts(page)
-        .then(response => {
-            dispatch(setPostsSuccess(response.data));
-        });
+    try {
+        postersApi.getPosts(page)
+            .then(response => {
+                dispatch(setPostsSuccess(response.data));
+            });
+    } catch (e) {
+        console.log('Произошла ошибка ' + e);
+    } 
 }
 
 export const setAllPosts = () => (dispatch) => {
-    dispatch(toggleIsGettingPost(true))
-    let posts = []
-    async function proccessGettingPosts(array) {
-        for (let item of array) {
-            await postersApi.getPosts(item)
-                .then(response => {
-                    posts.push(...response.data)
-                });
-            if (posts.length > 30) {
-                dispatch(setAllPostsSuccess(posts));
+    try {
+        dispatch(toggleIsGettingPost(true))
+        let posts = []
+        async function proccessGettingPosts(array) {
+            for (let item of array) {
+                await postersApi.getPosts(item)
+                    .then(response => {
+                        posts.push(...response.data)
+                    });
+                if (posts.length > 30) {
+                    dispatch(setAllPostsSuccess(posts));
+                }
             }
-        }  
-        dispatch(toggleIsGettingPost(false))
-    }
-    proccessGettingPosts([1, 2, 3, 4, 5]);
+            dispatch(toggleIsGettingPost(false))
+        }
+        proccessGettingPosts([1, 2, 3, 4, 5]);
+    } catch (e) {
+        console.log('Произошла ошибка ' + e);
+    } 
 }
 
 export const getOnePost = (postId) => (dispatch) => {
-    postersApi.getOnePost(postId)
-        .then(r => {
-            dispatch(setOnePost(r.data))
-        })
+    try {
+        postersApi.getOnePost(postId)
+            .then(r => {
+                dispatch(setOnePost(r.data))
+            })
+    } catch (e) {
+        console.log('Произошла ошибка ' + e);
+    } 
 }
 
 export const getRating = (postId) => (dispatch) => {
-    postersApi.getRating(postId)
-        .then(r => {
-            dispatch(setLike(r.data))
-        })
+    try {
+        postersApi.getRating(postId)
+            .then(r => {
+                dispatch(setLike(r.data))
+            })
+    } catch (e) {
+        console.log('Произошла ошибка ' + e);
+    } 
 }
 
 export const likeThePost = (userReq, postId, obj) => (dispatch) => {
-    postersApi.likeThePost(userReq, postId, obj)
-        .then(r2 => {
-            postersApi.getRating(postId)
-                .then(r3 => {
-                    dispatch(setLike(r3.data))
-                })
-        })
+    try {
+        postersApi.likeThePost(userReq, postId, obj)
+            .then(r2 => {
+                postersApi.getRating(postId)
+                    .then(r3 => {
+                        dispatch(setLike(r3.data))
+                    })
+            })
+    } catch (e) {
+        console.log('Произошла ошибка ' + e);
+    } 
 }
 
 export const newPostImage = (newPostData) => (dispatch) => {
-
-    if (newPostData.images) {
-        dispatch(toggleIsPosting(true))
-        postersApi.newPostImage(newPostData.images)
-            .then(r => {
-                if (r.data.url) {
-                    postersApi.newPost(newPostData, r)
-                        .then(r => {
-                            dispatch(toggleIsPosting(false))
-                            dispatch(setPosts());
-                            if (r.status === 201) {
-                                dispatch(stopSubmit('newPost', {_error: 'Объявление опубликовано' }));
-                                dispatch(newCurrentImage(null));
-                            }
-                        })
-                }
-            })
-    } else {
-        dispatch(toggleIsPosting(true))
-        postersApi.newPost(newPostData)
-            .then(r => {
-                dispatch(toggleIsPosting(false))
-                dispatch(newCurrentImage(null));
-                dispatch(stopSubmit('newPost', {_error: 'Объявление опубликовано' }));
-                dispatch(setPosts()); 
-            })
-    }
+    try {
+        if (newPostData.images) {
+            dispatch(toggleIsPosting(true))
+            postersApi.newPostImage(newPostData.images)
+                .then(r => {
+                    if (r.data.url) {
+                        postersApi.newPost(newPostData, r)
+                            .then(r => {
+                                dispatch(toggleIsPosting(false))
+                                dispatch(setPosts());
+                                if (r.status === 201) {
+                                    dispatch(stopSubmit('newPost', { _error: 'Объявление опубликовано' }));
+                                    dispatch(newCurrentImage(null));
+                                }
+                            })
+                    }
+                })
+        } else {
+            dispatch(toggleIsPosting(true))
+            postersApi.newPost(newPostData)
+                .then(r => {
+                    dispatch(toggleIsPosting(false))
+                    dispatch(newCurrentImage(null));
+                    dispatch(stopSubmit('newPost', { _error: 'Объявление опубликовано' }));
+                    dispatch(setPosts());
+                })
+        }
+    } catch (e) {
+        console.log('Произошла ошибка ' + e);
+    } 
 }
 
 export const setFavoritePosts = (userId, page) => (dispatch) => {
-    postersApi.getFavoritePosts(userId, page)
-        .then(r => {
-            dispatch(setFavoritePostsSuccess(r.data))
-        })
+    try {
+        postersApi.getFavoritePosts(userId, page)
+            .then(r => {
+                dispatch(setFavoritePostsSuccess(r.data))
+            })
+    } catch (e) {
+        console.log('Произошла ошибка ' + e);
+    } 
 }

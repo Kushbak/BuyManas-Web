@@ -19,7 +19,7 @@ export const getFacultiesPostsSuccess = (posts) => ({
 })
 
 export const clearFacultyPosts = () => ({
-    type: 'CLEAR_FACULTY_POSTS' 
+    type: 'CLEAR_FACULTY_POSTS'
 })
 
 
@@ -28,29 +28,44 @@ export const clearFacultyPosts = () => ({
 // REDUX-THUNKS
 
 export const setFaculties = () => (dispatch) => {
-    facultiesApi.getfaculties()
-        .then(response => {
-            dispatch(setFacultiesSuccess(response.data));
-        });
+    try {
+        facultiesApi.getfaculties()
+            .then(response => {
+                dispatch(setFacultiesSuccess(response.data));
+            });
+    } catch (e) {
+        console.log('Произошла ошибка ' + e);
+    }
+
 }
 
 export const setDepartments = () => (dispatch) => {
-    departmentsApi.getDepartments()
-        .then(response => {
-            dispatch(setDepartmentsSuccess(response.data));
-        });
+    try {
+        departmentsApi.getDepartments()
+            .then(response => {
+                dispatch(setDepartmentsSuccess(response.data));
+            });
+    } catch (e) {
+        console.log('Произошла ошибка ' + e);
+    }
+
 }
 
-export const getFacultiesPosts = (facultyId, page) => (dispatch) => { 
-    if (facultyId === "0") {
-        postersApi.getFacultiesNullPosts(page)
-            .then(r => {
-                dispatch(getFacultiesPostsSuccess(r.data))
-    })
-    } else {
-        postersApi.getFacultiesPosts(facultyId, page)
-            .then(r => {
-                dispatch(getFacultiesPostsSuccess(r.data))
-    })
+export const getFacultiesPosts = (facultyId, page) => (dispatch) => {
+    try {
+        if (facultyId === "0") {
+            postersApi.getFacultiesNullPosts(page)
+                .then(r => {
+                    dispatch(getFacultiesPostsSuccess(r.data))
+                })
+        } else {
+            postersApi.getFacultiesPosts(facultyId, page)
+                .then(r => {
+                    dispatch(getFacultiesPostsSuccess(r.data))
+                })
+        }
+    } catch (e) {
+        console.log('Произошла ошибка ' + e);
     }
+
 }
