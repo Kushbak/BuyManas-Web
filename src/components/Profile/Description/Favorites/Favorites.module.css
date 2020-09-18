@@ -1,0 +1,62 @@
+.favoritePosts{ 
+    display: block;   
+    padding: 40px; 
+}
+
+.favoritePosts a{ 
+    text-decoration: none;
+    color: black;
+    
+}
+
+.favoritePostItem{ 
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    grid-gap: 20px;
+    width: 70%; 
+    margin-top: 35px;
+    padding: 20px;
+    background: #fff;
+    border-radius: 20px;
+    cursor: pointer; 
+}
+ 
+.favoritePostItem .imgBlock{  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    width: 200px;
+    border: 3px solid #000;
+    border-radius: 10%;    
+    margin: 0 auto;
+    overflow-y: hidden
+}
+
+.favoritePostItem .imgBlock img{
+    width: 100%;
+}
+.favoritePostItem .descriptionBlock{
+    display: grid;
+    grid-template-rows: 1fr 3fr 1fr;
+}
+
+.favoritePostItem .descriptionBlock p{ 
+    margin: 5px 0 5px 8px;
+}
+.favoritePostItem .descriptionBlock .postTitle{
+    font-size: 18px;
+    font-weight: bold; 
+    margin-top: 10px;
+}
+.favoritePostItem .descriptionBlock .description{ 
+    padding-right: 20px;
+}
+.favoritePostItem .descriptionBlock .cost{
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.nullPosts {
+    font-size: 20px; 
+}

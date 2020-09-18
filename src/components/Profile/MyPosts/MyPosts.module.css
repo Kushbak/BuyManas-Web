@@ -1,0 +1,63 @@
+.myPostsWrapper{
+    padding: 20px;  
+    padding-top: 0;
+}
+
+h3{
+    font-size: 32px;
+}
+
+.myPosts{ 
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-template-rows:(2, 1fr);
+    grid-gap: 20px;
+    border: 1px solid #000;
+    border-radius: 10px;    
+    padding: 10px;
+    cursor: pointer;
+}
+.myPosts a{
+    text-decoration: none;
+    color: #000; 
+}
+
+.myPostItem{ 
+    margin-top: 15px;
+}
+ 
+.myPostItem .imgBlock{  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 210px;
+    width: 210px;
+    border: 3px solid #000;
+    border-radius: 10%;    
+    margin: 0 auto;
+    overflow-y: hidden;
+}
+
+.myPostItem img{
+    width: 100%;  
+}
+
+.myPostItem p{ 
+    margin: 5px 0 5px 2px;
+}
+.myPostItem .postTitle{
+    font-size: 15px; 
+}
+
+.myPostItem .cost{
+    font-size: 15px;
+    font-weight: bold;
+}
+
+
+/* Slider dots */
+
+.slidersStyle button:before{
+    font-size: 30px;
+    color: #000 !important;
+}

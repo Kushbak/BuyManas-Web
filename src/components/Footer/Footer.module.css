@@ -1,0 +1,32 @@
+.footerWrapper{
+    display: flex;
+    justify-content: space-between;
+    align-items: center; 
+    grid-area: 'f'
+} 
+.rightSide{
+    display: flex;
+    align-items: center;
+} 
+.logo{
+    width: 70px;
+    margin: 20px;
+} 
+p.copyright{ 
+    display: inline;
+    font: 14px;
+    color: #a1a8bd; 
+}
+
+.leftSide{
+    display: flex;
+    align-items: center;
+} 
+.mediaLinks a{
+    margin-right: 40px;
+    text-decoration: none;
+    color: #174b81;
+}
+.mediaLinks a:hover{
+    color: #000;
+}

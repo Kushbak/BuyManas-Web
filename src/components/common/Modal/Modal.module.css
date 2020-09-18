@@ -1,0 +1,55 @@
+.modalWrapper{
+    width: 300px;
+    height: 100%;
+    margin: 10px auto;
+    background: #fff;
+    border: 2px solid black;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.btnCloseBlock{
+    text-align: right;
+}
+
+.logoBlock{
+    width: 100%;
+    padding: 30px 0 20px 0;
+    text-align: center;
+}
+.logoBlock img{
+    width: 40%;
+    margin: 0 auto;
+}
+
+.modalBody form{
+    text-align: center;
+    padding: 0 10px 10px ;
+}
+
+.modalBody input, 
+.modalBody select{
+    width: 200px;
+    display: block;
+    padding: 7px;
+    border: none;
+    border-bottom: 1px solid black;
+    margin-top: 10px;
+    margin: 10px auto 0 ;
+    font-size: 14px;
+}
+.modalBody select{
+    width: 215px;
+}
+
+.modalBody button{
+    width: 220px;
+    margin-top: 10px;
+    padding: 10px 0;
+    background: #174b81;
+    color: rgb(236, 121, 13);
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
