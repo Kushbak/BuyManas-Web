@@ -1,7 +1,9 @@
 import * as axios from 'axios';
 
+const proxyURL = 'https://cors-anywhere.herokuapp.com/';
+
 const instance = axios.create({
-    baseURL: 'http://buymanasapi.ru.xsph.ru/index.php/api/', 
+    baseURL: proxyURL + 'http://buymanasapi.ru.xsph.ru/index.php/api/', 
 }) 
 
 export const authApi = {
