@@ -15,7 +15,7 @@ const MyPosts = (props) => {
     
     return (
         <div className={styles.myPostsWrapper}>
-            <h3>{t('myPosts')}</h3>
+            <h3>{t('myPosts')}</h3> 
             <div className={styles.myPosts}>
                 {LastPostsArray.length
                     ? LastPostsArray.map(l => <NavLink to={`posts/${l.id}`} key={l.id}>
@@ -29,8 +29,7 @@ const MyPosts = (props) => {
                             <p className={styles.postTitle}>{l.title}</p>
                         </div>
                     </NavLink>)
-                    : <p className={styles.nullPosts}>{t('noPostsNow')}</p>
-                }
+                    : <p className={styles.nullPosts}>{t('noPostsNow')}</p>}
             </div>
             {props.hasMore && props.posts.length && <div className='loader'>{t('loading')}</div>}
         </div>

@@ -1,5 +1,4 @@
-import React from 'react';
-import styles from './Profile.module.css';
+import React from 'react';  
 import DescriptionContainer from './Description/DescriptionContainer';
 import MyPostsContainer from './MyPosts/MyPostsContainer';
 import { compose } from 'redux';
@@ -7,9 +6,11 @@ import { withAuthRedirect } from '../../hoc/withAuthRedirect';
 
 const Profile = (props) => {
     return(
-        <div className={styles.profileWrapper}>
-            <DescriptionContainer />
-            <MyPostsContainer />
+        <div>
+            <div className="wrapper">
+                <DescriptionContainer />
+                <MyPostsContainer />
+            </div>
         </div>
     )
 };

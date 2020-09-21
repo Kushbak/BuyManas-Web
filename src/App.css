@@ -1,5 +1,17 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: Arial;
+}
+
 html{
     font-size: 16px;
+}
+
+h3{
+    font-size: 32px;
+    padding-bottom: 20px;
 }
 
 .appWrapper{
@@ -12,10 +24,19 @@ html{
     background: whitesmoke;
 } 
 
+a{
+    text-decoration: none;
+    color: #fff;
+}
+
 .wrapper{
     width: 100%;
     max-width: 1140px;
     margin: 0 auto;
+}
+
+button{
+    cursor: pointer;
 }
 
 .modalWrapper{
@@ -78,7 +99,7 @@ html{
 		max-width: 960px;
 	}
 }
-@media (min-width: 1440px){
+@media (min-width: 1300px){
 	.wrapper{
 		max-width: 1140px;
 	}
@@ -97,15 +118,15 @@ html{
 }
 @media (max-width: 768px){
     html{
-        font-size: 20px;
+        font-size: 22px;
     } 
 }  
 @media (max-width: 576px){
+    html{
+        font-size: 26px;
+    } 
     .wrapper{
         max-width: none;
         padding: 0 15px; 
 	}
-    html{
-        font-size: 22px;
-    } 
 }

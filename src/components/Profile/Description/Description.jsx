@@ -31,12 +31,12 @@ const Description = (props) => {
                     : <img className={styles.avatar} src={require('../../../assets/images/avatar.jpg')} alt="avatar" />
                 }
             </div>
-            <div className={styles.about}>
+            <div className={styles.aboutBlock}>
                 <div className={styles.names}>
                     <p className={styles.name}> {props.name} </p>
                     <p className={styles.username}> @{props.username} </p>
                 </div>
-                <div className={styles.iDontKnow}>
+                <div className={styles.about}>
 
                     <div className={styles.faculty}>
                         {props.faculty
@@ -54,13 +54,12 @@ const Description = (props) => {
                     </div>
                 </div>
             </div>
-            <div className={styles.someButtons}>
-                <NavLink to={'/newPost'}> <button className={styles.addPostBtn}> {t('Sell')} </button></NavLink>
-                <NavLink to={'/favoritePosts'}> <button className={styles.favoritePosts}> {t('Favorites')} </button></NavLink>
+            <div className={styles.settingsButtons}>
+                <NavLink to={'/newPost'} className={styles.addPostBtn}> {t('Sell')} </NavLink>
+                <NavLink to={'/favoritePosts'} className={styles.favoritePosts}>  {t('Favorites')} </NavLink>
+                <button className={styles.editProfile} onClick={props.toggleModalWindowEditProfile}> {t('editProfile')} </button> 
                 <button className={styles.favoritePosts} onClick={props.toggleModalWindowEditPassword}> {t('changePass')} </button>
             </div>
-            <button className={styles.editProfile} onClick={props.toggleModalWindowEditProfile}> {t('editProfile')} </button>
-            <div className={styles.phoneNumber}> {props.phone} </div> 
 
             {
                 props.editProfileModalOpen &&
@@ -70,8 +69,7 @@ const Description = (props) => {
             {
                 props.editPasswordModalOpen &&
                 <EditPasswordModal {...props} />
-            }
-
+            } 
         </div>
     )
 }
