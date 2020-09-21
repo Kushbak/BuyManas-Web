@@ -1,3 +1,7 @@
+html{
+    font-size: 16px;
+}
+
 .appWrapper{
     display: grid;
     grid-template-areas: ' h '
@@ -64,14 +68,6 @@
 
 
 
-
-
-
-@media (min-width: 576px){
-	.wrapper{
-		max-width: 540px;
-	}
-}
 @media (min-width: 768px){
 	.wrapper{
 		max-width: 720px;
@@ -82,8 +78,34 @@
 		max-width: 960px;
 	}
 }
-@media (min-width: 1300px){
+@media (min-width: 1440px){
 	.wrapper{
 		max-width: 1140px;
 	}
+}
+
+
+@media (max-width: 1300px){
+    html{
+        font-size: 16px;
+    } 
+}
+@media (max-width: 992px){ 
+    html{
+        font-size: 18px;
+    } 
+}
+@media (max-width: 768px){
+    html{
+        font-size: 20px;
+    } 
+}  
+@media (max-width: 576px){
+    .wrapper{
+        max-width: none;
+        padding: 0 15px; 
+	}
+    html{
+        font-size: 22px;
+    } 
 }
