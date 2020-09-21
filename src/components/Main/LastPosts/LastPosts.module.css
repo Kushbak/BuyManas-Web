@@ -4,8 +4,7 @@
 
 .lastPosts{ 
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    grid-template-rows: repeat(1, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
     grid-gap: 20px; 
     border-radius: 10px;    
     padding: 10px;
@@ -31,7 +30,6 @@
     border-radius: 10%;    
     margin: 0 auto;
     overflow: hidden;
-
 }
 
 .lastPostItem img{
@@ -42,11 +40,11 @@
     margin: 5px 0 5px 8px;
 }
 .lastPostItem .postTitle{
-    font-size: 15px; 
+    font-size: 1rem; 
 }
 
 .lastPostItem .cost{
-    font-size: 15px;
+    font-size: 1rem;
     font-weight: bold;
 }
 
@@ -54,6 +52,49 @@
 /* Slider dots */
 
 .slidersStyle button:before{
-    font-size: 30px;
+    font-size: 1.8rem;
     color: #000 !important;
+}
+
+
+@media (max-width: 1024px) { 
+    .lastPosts{  
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); 
+        grid-gap: 10px;  
+    }
+ 
+    .lastPostItem .imgBlock{   
+        height: 200px;
+        width: 200px; 
+    }
+}
+@media (max-width: 768px) {
+    .lastPosts{  
+        grid-template-columns: repeat(3, 1fr); 
+        grid-gap: 10px;  
+    }
+ 
+    .lastPostItem .imgBlock{   
+        height: 200px;
+        width: 200px; 
+    }
+}
+@media (max-width: 500px) {
+    html{
+        font-size: 22px;
+    }
+    .lastPosts{  
+        grid-template-columns: repeat(2, 1fr); 
+        grid-gap: 10px;  
+    }
+ 
+    .lastPostItem .imgBlock{   
+        height: 500px;
+        width: 500px; 
+    }
+    
+    .lastPostItem p{ 
+        margin: 10px auto 0;
+        width: 400px;
+    }
 }
