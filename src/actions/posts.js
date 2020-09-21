@@ -26,8 +26,7 @@ export const setAllPostsSuccess = allPosts => ({
 
 export const setOnePost = (postData) => ({
     type: 'SET_ONE_POST',
-    postData,
-    comments: postData.comments
+    postData
 })
 
 export const setLike = (ratingData) => ({

@@ -2,8 +2,7 @@ let initialState = {
     posts: [],
     allPosts: [],
     postsOfFaculty: [],
-    searchedPost: undefined,
-    comments: [],
+    searchedPost: undefined, 
     forPostPage: null,
     ratings: [],
     currentImage: null,
@@ -31,8 +30,7 @@ const postsReducer = (state = initialState, action) => {
         case 'SET_ONE_POST': {
             return {
                 ...state,
-                forPostPage: { ...action.postData },
-                comments: [...action.comments]
+                forPostPage: { ...action.postData }
             }
         }
         case 'SET_LIKE': {
@@ -62,7 +60,7 @@ const postsReducer = (state = initialState, action) => {
         case 'NEW_COMMENT': {
             return {
                 ...state,
-                comments: [...state.comments,  action.commentData]
+                forPostPage: { ...state.forPostPage,  comments: [...state.forPostPage.comments, action.commentData] }
             }
         }
         case 'GET_FACULTIES_POSTS': {

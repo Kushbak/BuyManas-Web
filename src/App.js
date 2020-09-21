@@ -2,7 +2,7 @@ import FavoritesContainer from './components/Profile/Description/Favorites/Favor
 import FacultiesPostsContainer from './components/FacultiesPosts/FacultiesPostsContainer';
 import NewPostContainer from './components/Profile/Description/NewPost/NewPostContainer';
 import { clearFacultyPosts, setFaculties, setDepartments } from './actions/faculties';
-import PostsPageContainer from './components/Main/PostsPage/PostsPageContainer';
+import PostsPageContainer from './components/PostsPage/PostsPageContainer';
 import HeaderContainer from './components/Header/HeaderContainer'
 import Preloader from './components/common/Preloader/Preloader';
 import { setPosts, setAllPosts } from './actions/posts'
@@ -41,10 +41,10 @@ class App extends React.Component {
                 <Route exact path='/' render={() => <Main />} />
                 <Route path='/profile' render={() => <Profile />} />
                 <Route path='/facultiesPosts/:facultyId' render={() => <FacultiesPostsContainer />} />
-                <Route path={'/facultiesPosts/:facultyId/posts/:postsId'} render={() => <PostsPageContainer />} />
-                <Route path={'/posts/:postsId'} render={() => <PostsPageContainer />} />
-                <Route path={'/newPost'} render={() => <NewPostContainer />} />
-                <Route path={'/favoritePosts'} render={() => <FavoritesContainer />} />
+                <Route path='/facultiesPosts/:facultyId/posts/:postsId' render={() => <PostsPageContainer />} />
+                <Route path='/posts/:postsId' render={() => <PostsPageContainer />} />
+                <Route path='/newPost' render={() => <NewPostContainer />} />
+                <Route path='/favoritePosts' render={() => <FavoritesContainer />} />
                 <Footer />
             </div>
         );
