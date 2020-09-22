@@ -49,8 +49,8 @@
 
 .categoriesBlock{ 
     display: grid;
-    grid-template-columns: repeat(7, minmax(100px, 1fr));
-    grid-template-rows: repeat(2, 115px);
+    grid-template-columns: repeat(7, 1fr);
+    /* grid-template-rows: repeat(2, 115px); */
     grid-gap: 10px;
     width: 100%;
     padding: 40px 0 10px;
@@ -74,4 +74,20 @@
 
 .facultyName{
     color: white
+}
+
+
+
+@media (max-width: 1024px) { 
+    .categoriesBlock{
+        grid-template-columns: repeat(4, 1fr);
+    } 
+}
+@media (max-width: 768px) {
+    
+}
+@media (max-width: 576px) { 
+    .categoriesBlock{
+        display: none;
+    }
 }

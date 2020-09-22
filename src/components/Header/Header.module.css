@@ -9,15 +9,16 @@
     grid-area: 'h'
 } 
 
-.headerBlock div{
+.headerBlock > div{
     display: flex;
 }
 
 /* logo */
 
 .slogan{
+    display: flex;
     flex-direction: column;
-    justify-content: center;
+    place-content: center;
     margin-left: 10px;
 }
 .slogan p{
@@ -107,4 +108,18 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
+}
+
+/* TODO: Add burger menu <768px width with categories and localization */
+
+@media (max-width: 1024px) { 
+ 
+}
+@media (max-width: 768px) {
+ 
+}
+@media (max-width: 576px) {
+    .changeLangBlock{
+        display: none;
+    }
 }
