@@ -15,17 +15,23 @@ const LastPosts = (props) => {
         return new Date(b.publishedAt) - new Date(a.publishedAt);
     }).forEach(p => LastPostsArray.push(p));
 
+    const hideLongTitle = (title) => {
+        if(title.length > 20){
+            return `${title.slice(0, 18)}...`
+        }
+        return title;
+    } 
     return (
         <div className={styles.LastPostsWrapper}>
             <div className="wrapper">
                 <h3>{t('postsLast')}</h3>
                 <div className={styles.lastPosts} >
                         {LastPostsArray.map(p => (
-                            <NavLink to={`posts/${p.id}`} key={p.id}>
-                                <div className={styles.lastPostItem} key={p.id}>
+                            <div className={styles.lastPostItem} key={p.id}>
+                                <NavLink to={`posts/${p.id}`} key={p.id}>
                                     <div className={styles.imgBlock}>
                                         {p.images
-                                            ? p.images.length 
+                                            ? p.images.length
                                                 ? <img src={IMAGES_URL + p.images[0].url} alt="categoryIcon" />
                                                 : <img src={require('../../../assets/images/logo.png')} alt="categoryIcon" />
                                             : <Preloader />
@@ -33,9 +39,9 @@ const LastPosts = (props) => {
                                     </div>
 
                                     <p className={styles.cost}> {p.cost != null ? p.cost + t('som') : t('contract')}</p>
-                                    <p className={styles.postTitle}>{p.title}</p>
-                                </div>
-                            </NavLink>
+                                    <p className={styles.postTitle}>{hideLongTitle(p.title)}</p>
+                                </NavLink>
+                            </div>
                         ))} 
                 </div>
             </div>
