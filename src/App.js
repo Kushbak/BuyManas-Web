@@ -1,6 +1,6 @@
-import FavoritesContainer from './components/Profile/Description/Favorites/FavoritesContainer';
+import FavoritesContainer from './components/Favorites/FavoritesContainer';
 import FacultiesPostsContainer from './components/FacultiesPosts/FacultiesPostsContainer';
-import NewPostContainer from './components/Profile/Description/NewPost/NewPostContainer';
+import NewPostContainer from './components/NewPost/NewPostContainer';
 import { clearFacultyPosts, setFaculties, setDepartments } from './actions/faculties';
 import PostsPageContainer from './components/PostsPage/PostsPageContainer';
 import HeaderContainer from './components/Header/HeaderContainer'
