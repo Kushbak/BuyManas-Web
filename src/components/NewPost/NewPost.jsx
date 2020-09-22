@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import styles from './NewPost.module.css';
 import { Field, reduxForm } from 'redux-form';
-import { Input, Textarea } from '../../../common/FormsControls/FormsControls';
-import { required, maxLengthCreator } from '../../../../utils/validators/validators';
+import { Input, Textarea } from '../common/FormsControls/FormsControls';
+import { required, maxLengthCreator } from '../../utils/validators/validators';
 import { compose } from 'redux';
-import { withAuthRedirect } from '../../../../hoc/withAuthRedirect';
-import { getLocale } from '../../../../i18next'; 
+import { withAuthRedirect } from '../../hoc/withAuthRedirect';
+import { getLocale } from '../../i18next'; 
 import { useTranslation } from 'react-i18next';
 import { Redirect } from 'react-router-dom';
 
@@ -29,7 +29,7 @@ const NewPost = (props) => {
             })
     }   
 
-    const maxLength40 = maxLengthCreator(30);
+    const maxLength30 = maxLengthCreator(30);
     
     let date = new Date(); 
 
@@ -64,7 +64,7 @@ const NewPost = (props) => {
                 <div className={styles.newTitle}>
                     <p className={styles.blockName}>{t('NameOfPost')}<sup>*</sup> </p>                
                     <div className={styles.inputs}>
-                        <Field component={Input} name='title' type='text' placeholder={t('NameOfPost')} validate={[required, maxLength40]} />
+                        <Field component={Input} name='title' type='text' placeholder={t('NameOfPost')} validate={[required, maxLength30]} />
                     </div>
                 </div>
 

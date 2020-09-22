@@ -1,7 +1,7 @@
 import React from 'react'
 import Favorites from './Favorites'
 import { connect } from 'react-redux'
-import { setFavoritePosts, setCurrentPage } from '../../../../actions/posts'
+import { setFavoritePosts, setCurrentPage } from '../../actions/posts'
 
 class FavoritesContainer extends React.Component {
     constructor(props) {

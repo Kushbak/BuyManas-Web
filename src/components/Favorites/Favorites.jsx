@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from './Favorites.module.css'
 import { NavLink } from 'react-router-dom'
-import { IMAGES_URL } from '../../../../constants'
+import { IMAGES_URL } from '../../constants'
 import { useTranslation } from 'react-i18next'
 
 const Favorites = (props) => {
@@ -15,7 +15,7 @@ const Favorites = (props) => {
                             {p.poster[0].images.length ?
                                 <img src={IMAGES_URL + p.poster[0].images[0].url} alt="categoryIcon" />
                                 :
-                                <img src={require('../../../../assets/images/logo.png')} alt="categoryIcon" />
+                                <img src={require('../../assets/images/logo.png')} alt="categoryIcon" />
                             }
                         </div>
                         <div className={styles.descriptionBlock}>
