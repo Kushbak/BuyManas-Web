@@ -62,74 +62,78 @@ const PostsPage = (props) => {
     
     // console.log(p.publishedAt);
     return (
-        <div className={styles.postWrapper}>
-            <div className={styles.forFlexDisplay}>
-                <div className={styles.aboutPost}>
-                    <h2>{p.title}</h2>
-                    <div className={styles.postImg + ' ' + (p.images[0] !== undefined ? styles.noneBorder : '')}>
-                        {p.images[0] !== undefined
-                            ? <img src={IMAGES_URL + p.images[0].url} alt="Post" />
-                            : <p>Нет фотографии</p>}
-                    </div>
-                    <div className={styles.miniDiv}>
-                        <div>
-                            <p>Дата публикации: { formatDate(p.publishedAt) }</p>
-                            {props.ratings && <p>Рейтинг: {props.ratings.rating}</p>}
-                            <p className={styles.cost}>Цена: {p.cost != null ? p.cost + ' сом' : t('contract')}</p>
+        <div className={styles.postInfo}>
+            <div className="wrapper"> 
+                <div className={styles.postInfoBlock}>
+                    <div className={styles.aboutPost}>
+                        <h2>{p.title}</h2>
+                        <div className={styles.postImg + ' ' + (p.images[0] !== undefined ? styles.noneBorder : '')}>
+                            {p.images[0] !== undefined
+                                ? <img src={IMAGES_URL + p.images[0].url} alt="Post" />
+                                : <p>Нет фотографии</p>}
                         </div>
-                        {p.author.id !== props.userId &&
-                            <div className={styles.like}>
-                                <input type="image" onClick={handleLike} width='50px'
-                                    src={props.ratings && props.ratings.author.includes(`/index.php/api/users/${props.userId}`) 
-                                            ? require('../../assets/images/like.png') 
-                                            : require('../../assets/images/dislike.png')
-                                        }
-                                    alt="ОК">
-                                </input>
+                        <div className={styles.postDescriptionBlock}>
+                            <div className={styles.postDescription}>
+                                <p>Дата публикации: { formatDate(p.publishedAt) }</p>
+                                {props.ratings && <p>Рейтинг: {props.ratings.rating}</p>}
+                                <p className={styles.cost}>Цена: {p.cost != null ? p.cost + ' сом' : t('contract')}</p>
                             </div>
-                        }
-                    </div>
-                    <div className={styles.descrBlock}>
-                        <p className={styles.descrItem}>{p.description}</p>
-                    </div>
-
-                    <hr />
-
-                </div>
-
-                <div className={styles.aboutAuthor}>
-                    <h3>Автор</h3>
-                    <p className={styles.username}>{p.author.username}</p>
-                    <p className={styles.phone}>{p.author.phone}</p>
-                    <div className={styles.authorsFaculty}>
-                        {p.department !== null
-                            ? <NavLink to={`/facultiesPosts/${p.department.faculty.id}`}><img src={require(`../../assets/images/${p.department.faculty.id}.png`)} alt="Faculty" /></NavLink>
-                            : <p>Факультет не определен</p>}
-                    </div>
-                </div>
-            </div>
-
-            <div className={styles.commentsBlock}>
-                <h2>Комментарии</h2>
-                <div className={styles.comments}>
-                    <div className={styles.newComment}>
-                        <form onSubmit={props.handleSubmit(submit)}>
-                            {props.isAuth
-                                ? <><Field component={Input} name='newComment' type='text' placeholder='Ваш Комментарий' /><button>Отправить</button></>
-                                : <p className={styles.blockComment}>Зарегистрируйтесь или войдите, чтобы оставить комментарий</p>
+                            {p.author.id !== props.userId &&
+                                <div className={styles.like}>
+                                    <input type="image" onClick={handleLike} width='50px'
+                                        src={props.ratings && props.ratings.author.includes(`/index.php/api/users/${props.userId}`) 
+                                                ? require('../../assets/images/like.png') 
+                                                : require('../../assets/images/dislike.png')
+                                            }
+                                        alt="ОК">
+                                    </input>
+                                </div>
                             }
-                        </form>
-                    </div>
-                    <div className={styles.commentsOfPost}>
-                        {p.comments &&
-                            p.comments.sort((a, b) => {
-                                return new Date(b.publishedAt) - new Date(a.publishedAt);
-                            }).map(c => <div className={styles.commentItem} >
-                                <div className={styles.author}>{c.author.username} <span className={styles.publishedAt}>{formatDate(c.publishedAt)}</span></div>
-                                <div className={styles.content}>{c.content}</div>
+                        </div>
+                        <div className={styles.descrBlock}>
+                            <p className={styles.descrItem}>{p.description}</p>
+                        </div>
 
+                        <hr />
+                    </div>
+
+                    <div className={styles.aboutAuthorBlock}>
+                        <h3>Автор</h3>
+                        <div className={styles.aboutAuthor}>
+
+                            <p className={styles.username}>@{p.author.username}</p>
+                            <p className={styles.phone}>{p.author.phone}</p>
+                            <div className={styles.authorsFaculty}>
+                                {p.department !== null
+                                    ? <NavLink to={`/facultiesPosts/${p.department.faculty.id}`}><img src={require(`../../assets/images/${p.department.faculty.id}.png`)} alt="Faculty" /></NavLink>
+                                    : <p>Факультет не определен</p>}
                             </div>
-                            )}
+                        </div>
+                    </div>
+                </div>
+
+                <div className={styles.commentsBlock}>
+                    <h2>Комментарии</h2>
+                    <div className={styles.comments}>
+                        <div className={styles.newComment}>
+                            <form onSubmit={props.handleSubmit(submit)}>
+                                {props.isAuth
+                                    ? <><Field component={Input} name='newComment' type='text' placeholder='Ваш Комментарий' /><button>Отправить</button></>
+                                    : <p className={styles.blockComment}>Зарегистрируйтесь или войдите, чтобы оставить комментарий</p>
+                                }
+                            </form>
+                        </div>
+                        <div className={styles.commentsOfPost}>
+                            {p.comments &&
+                                p.comments.sort((a, b) => {
+                                    return new Date(b.publishedAt) - new Date(a.publishedAt);
+                                }).map(c => <div className={styles.commentItem} >
+                                    <div className={styles.author}>{c.author.username} <span className={styles.publishedAt}>{formatDate(c.publishedAt)}</span></div>
+                                    <div className={styles.content}>{c.content}</div>
+
+                                </div>
+                                )}
+                        </div>
                     </div>
                 </div>
             </div>
