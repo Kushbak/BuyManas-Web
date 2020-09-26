@@ -65,7 +65,7 @@ const TopPosts = (props) => {
         <div className={styles.topPosts}>
             <div className="wrapper">
                 <div className={ styles.topPostsBlock }>
-                    <h3>{t('postsTop')}</h3>
+                    <h3 className='h3'>{t('postsTop')}</h3>
 
                     <div className={styles.topPostsSlider} >
                         <Slider className={styles.slidersStyle} {...settings} >

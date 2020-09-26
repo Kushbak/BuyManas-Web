@@ -16,7 +16,7 @@ const LastPosts = (props) => {
     }).forEach(p => LastPostsArray.push(p));
 
     const hideLongTitle = (title) => {
-        if(title.length > 20){
+        if(title.length > 18){
             return `${title.slice(0, 18)}...`
         }
         return title;
@@ -24,7 +24,7 @@ const LastPosts = (props) => {
     return (
         <div className={styles.LastPostsWrapper}>
             <div className="wrapper">
-                <h3>{t('postsLast')}</h3>
+                <h3 className='h3'>{t('postsLast')}</h3>
                 <div className={styles.lastPosts} >
                         {LastPostsArray.map(p => (
                             <div className={styles.lastPostItem} key={p.id}>

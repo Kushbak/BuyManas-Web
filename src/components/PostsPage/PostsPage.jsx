@@ -46,16 +46,17 @@ const PostsPage = (props) => {
     if (!p) {
         return <Preloader />
     }
+
     const addZeroToDate = (date) => {
         return (date < 10) ? `0${date}` : date;
     }
 
     const formatDate = (date) => {
-        let year = addZeroToDate(new Date(date).getFullYear());
-        let month = addZeroToDate(new Date(date).getMonth());
-        let day = addZeroToDate(new Date(date).getDate());
-        let hour = addZeroToDate(new Date(date).getHours());
-        let minute = addZeroToDate(new Date(date).getMinutes());
+        const year = addZeroToDate(new Date(date).getFullYear());
+        const month = addZeroToDate(new Date(date).getMonth());
+        const day = addZeroToDate(new Date(date).getDate());
+        const hour = addZeroToDate(new Date(date).getHours());
+        const minute = addZeroToDate(new Date(date).getMinutes());
         return `${day}.${month}.${year} ${hour}:${minute}`; 
     }
 
@@ -66,7 +67,7 @@ const PostsPage = (props) => {
             <div className="wrapper"> 
                 <div className={styles.postInfoBlock}>
                     <div className={styles.aboutPost}>
-                        <h2>{p.title}</h2>
+                        <h3 className='h3'>{p.title}</h3>
                         <div className={styles.postImg + ' ' + (p.images[0] !== undefined ? styles.noneBorder : '')}>
                             {p.images[0] !== undefined
                                 ? <img src={IMAGES_URL + p.images[0].url} alt="Post" />
@@ -98,9 +99,8 @@ const PostsPage = (props) => {
                     </div>
 
                     <div className={styles.aboutAuthorBlock}>
-                        <h3>Автор</h3>
-                        <div className={styles.aboutAuthor}>
-
+                        <h3 className='h3'>Автор</h3>
+                        <div className={styles.aboutAuthor}> 
                             <p className={styles.username}>@{p.author.username}</p>
                             <p className={styles.phone}>{p.author.phone}</p>
                             <div className={styles.authorsFaculty}>
@@ -113,7 +113,7 @@ const PostsPage = (props) => {
                 </div>
 
                 <div className={styles.commentsBlock}>
-                    <h2>Комментарии</h2>
+                    <h3 className='h3'>Комментарии</h3>
                     <div className={styles.comments}>
                         <div className={styles.newComment}>
                             <form onSubmit={props.handleSubmit(submit)}>

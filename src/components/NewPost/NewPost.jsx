@@ -29,7 +29,7 @@ const NewPost = (props) => {
             })
     }   
 
-    const maxLength30 = maxLengthCreator(30);
+    const maxLength20 = maxLengthCreator(20);
     
     let date = new Date(); 
 
@@ -64,7 +64,7 @@ const NewPost = (props) => {
                 <div className={styles.newTitle}>
                     <p className={styles.blockName}>{t('NameOfPost')}<sup>*</sup> </p>                
                     <div className={styles.inputs}>
-                        <Field component={Input} name='title' type='text' placeholder={t('NameOfPost')} validate={[required, maxLength30]} />
+                        <Field component={Input} name='title' type='text' placeholder={t('NameOfPost')} validate={[required, maxLength20]} />
                     </div>
                 </div>
 

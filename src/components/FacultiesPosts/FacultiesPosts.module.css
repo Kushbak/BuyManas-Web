@@ -1,11 +1,9 @@
 .facultyPostsWrapper{
     padding: 40px; 
 }
-
 .facultyPosts{ 
     display: block;   
 }
-
 .facultyPosts a{ 
     text-decoration: none;
     color: black;
@@ -15,7 +13,7 @@
     display: grid;
     grid-template-columns: 1fr 4fr;
     grid-gap: 20px;
-    width: 70%; 
+    width: 80%; 
     margin-top: 35px;
     padding: 20px;
     background: #fff;
@@ -23,7 +21,7 @@
     cursor: pointer; 
 }
  
-.facultyPostItem .imgBlock{  
+.imgBlock{  
     display: flex;
     justify-content: center;
     align-items: center;
@@ -34,31 +32,60 @@
     margin: 0 auto;
     overflow-y: hidden
 }
-
-.facultyPostItem .imgBlock img{
+.imgBlock img{
     width: 100%;
 }
-.facultyPostItem .descriptionBlock{
+
+.descriptionBlock{
     display: grid;
     grid-template-rows: 1fr 3fr 1fr;
-}
-
-.facultyPostItem .descriptionBlock p{ 
+} 
+.descriptionBlock p{ 
     margin: 5px 0 5px 8px;
 }
-.facultyPostItem .descriptionBlock .postTitle{
-    font-size: 18px;
+.descriptionBlock .postTitle{
+    font-size: 1.1rem;
     font-weight: bold; 
     margin-top: 10px;
 }
-.facultyPostItem .descriptionBlock .description{ 
+.descriptionBlock .description{ 
     padding-right: 20px;
+    font-size: 0.9rem;
 }
-.facultyPostItem .descriptionBlock .cost{
-    font-size: 15px;
+.descriptionBlock .cost{
+    font-size: 0.9rem;
     font-weight: bold;
 }
 
 .nullPosts {
-    font-size: 20px; 
+    font-size: 1.25rem; 
+}
+
+@media (max-width: 1024px){ 
+    .facultyPostItem{  
+        width: 90%;
+    }
+    .facultyPostItem .imgBlock{   
+        height: 180px;
+        width: 180px; 
+    }
+}
+
+@media (max-width: 768px){ 
+    .facultyPostItem{  
+        width: 100%; 
+    }
+    .descriptionBlock{
+        grid-template-rows: 1fr 2.4fr 1fr;
+    }
+}
+
+@media (max-width: 576px){ 
+    .facultyPostItem .imgBlock{   
+        height: 80px;
+        width: 80px; 
+    } 
+    .descriptionBlock{
+        grid-template-rows: repeat(auto-fit, minmax(30px, 1fr));
+    }
 }

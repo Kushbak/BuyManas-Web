@@ -22,7 +22,7 @@ const SearchedPosts = (props) => {
 
     return (
         <div >
-            <h3>Результаты поиска</h3>
+            <h3 className='h3'>Результаты поиска</h3>
 
             <div className={styles.searchedPosts} >
                 {

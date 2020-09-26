@@ -53,3 +53,10 @@
     font-weight: bold;
     cursor: pointer;
 }
+
+@media (max-width: 768px){
+    .modalWrapper{
+        width: 350px;
+        transform: translateY(50%); 
+    }     
+}

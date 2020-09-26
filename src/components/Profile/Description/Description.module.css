@@ -144,7 +144,7 @@
 @media (max-width: 576px){   
     .about{
         width: 60%;
-        flex-basis: 50%;
+        flex-basis: 50%;    
     }
     .about .faculty{
         width: 140px;
@@ -166,7 +166,7 @@
     } 
     .settingsButtons *{
         font-size: 1rem;
-        flex-basis: 42%;
+        flex-basis: 38%;
         margin-bottom: 20px;
         padding: 20px;
     }

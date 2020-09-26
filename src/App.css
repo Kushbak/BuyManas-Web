@@ -12,9 +12,12 @@ html{
 html, body{
     overflow-x: hidden; 
 }
+.h2{
+    font-size: 2.2rem; 
+}
 
-h3{
-    font-size: 32px;
+.h3{
+    font-size: 2rem;
     padding-bottom: 20px;
 }
 
@@ -117,12 +120,12 @@ button{
 }
 @media (max-width: 992px){ 
     html{
-        font-size: 18px;
+        font-size: 15px;
     } 
 }
 @media (max-width: 768px){
     html{
-        font-size: 22px;
+        font-size: 14px;
     } 
 }  
 @media (max-width: 576px){       
@@ -130,7 +133,7 @@ button{
         overflow-x: visible; 
     }
     html{
-        font-size: 26px;
+        font-size: 13px;
     } 
     .wrapper{ 
         max-width: 576px;

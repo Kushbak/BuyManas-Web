@@ -15,7 +15,7 @@ const MyPosts = (props) => {
     
     return (
         <div className={styles.myPostsWrapper}>
-            <h3>{t('myPosts')}</h3> 
+            <h3 className='h3'>{t('myPosts')}</h3> 
             <div className={styles.myPosts}>
                 {LastPostsArray.length
                     ? LastPostsArray.map(l => <NavLink to={`posts/${l.id}`} key={l.id}>
