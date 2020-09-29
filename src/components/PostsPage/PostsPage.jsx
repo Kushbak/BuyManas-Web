@@ -68,7 +68,7 @@ const PostsPage = (props) => {
                 <div className={styles.postInfoBlock}>
                     <div className={styles.aboutPost}>
                         <h3 className='h3'>{p.title}</h3>
-                        <div className={styles.postImg + ' ' + (p.images[0] !== undefined ? styles.noneBorder : '')}>
+                        <div className={styles.postImg}>
                             {p.images[0] !== undefined
                                 ? <img src={IMAGES_URL + p.images[0].url} alt="Post" />
                                 : <p>Нет фотографии</p>}

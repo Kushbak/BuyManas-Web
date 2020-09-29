@@ -20,15 +20,11 @@
     width: 600px;
     height: 300px;
     border-radius: 20px;
-    border: 2px solid rgb(31, 30, 30);
-    padding: 20px 10px;
+    border: 1px solid rgb(31, 30, 30);
+    padding: 10px 20px;
     margin: 30px 0;
-}
-.aboutPost .postImg.noneBorder{
-    border: none;
-}
-.aboutPost .postImg img{
-    border-radius: 20px;
+} 
+.aboutPost .postImg img{ 
     height: 100%;
 }
 .aboutPost .descrBlock{
