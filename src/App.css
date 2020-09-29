@@ -21,14 +21,13 @@ html, body{
     padding-bottom: 20px;
 }
 
-.appWrapper{
-    display: grid; 
-    background: whitesmoke;
+.appWrapper{ 
+    background: whitesmoke; 
 } 
 
 a{
     text-decoration: none;
-    color: #fff;
+    color: #000;
 }
 
 .wrapper{
