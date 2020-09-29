@@ -16,13 +16,13 @@ const TopPosts = (props) => {
         infinite: false,
         speed: 500,
         slidesToShow: 5,
-        slidesToScroll: 1, 
+        slidesToScroll: 2,
         responsive: [
             {
                 breakpoint: 1025,
                 settings: {
                     slidesToShow: 4,
-                    slidesToScroll: 2, 
+                    slidesToScroll: 2,
                 }
             },
             {
@@ -35,7 +35,7 @@ const TopPosts = (props) => {
             {
                 breakpoint: 600,
                 settings: {
-                    slidesToShow: 2,
+                    slidesToShow: 3,
                     slidesToScroll: 1
                 }
             }
@@ -44,7 +44,7 @@ const TopPosts = (props) => {
 
     const topPostsArray = [],
         postsWithRating = [];
- 
+
     function takeNsort() {
         for (let i = 0; i < props.allPosts.length; i++) {
             if (props.allPosts[i].ratings.length && props.allPosts[i].ratings[0].rating !== 0) {
@@ -53,45 +53,44 @@ const TopPosts = (props) => {
         }
     }
     takeNsort();
-    
+
     postsWithRating.sort((a, b) => b.ratings[0].rating - a.ratings[0].rating).forEach(p => {
         if (topPostsArray.length <= 9)
             topPostsArray.push(p);
-    }) 
-    if(!topPostsArray.length){
+    })
+    if (!topPostsArray.length) {
         return <Preloader />
     }
     return (
         <div className={styles.topPosts}>
             <div className="wrapper">
-                <div className={ styles.topPostsBlock }>
+                <div className={styles.topPostsBlock}>
                     <h3 className='h3'>{t('postsTop')}</h3>
 
                     <div className={styles.topPostsSlider} >
                         <Slider className={styles.slidersStyle} {...settings} >
-                            {
-                                topPostsArray.map(p => <NavLink to={`posts/${p.id}`} key={p.id}>
-                                    <div className={styles.topPostItem} key={p.id}>
+                            {topPostsArray.map(p => (
+                                <div className={styles.topPostItem} key={p.id}>
+                                    <NavLink to={`posts/${p.id}`} key={p.id}>
                                         <div className={styles.imgBlock}>
                                             {p.images
-                                                ? p.images.length ?
-                                                    <img src={IMAGES_URL + p.images[0].url} alt="categoryIcon" />
-                                                    :
-                                                    <img src={require('../../../assets/images/logo.png')} alt="categoryIcon" />
+                                                ? p.images.length
+                                                    ? <img src={IMAGES_URL + p.images[0].url} alt="categoryIcon" />
+                                                    : <img src={require('../../../assets/images/logo.png')} alt="categoryIcon" />
                                                 : <Preloader />
                                             }
                                         </div>
 
                                         <p className={styles.cost}> {p.cost != null ? p.cost + t('som') : t('contract')}</p>
                                         <p className={styles.postTitle}>{p.title}</p>
-                                    </div>
-                                </NavLink>)
-                            }
+                                    </NavLink>
+                                </div>
+                            ))}
                         </Slider>
                     </div>
                 </div>
             </div>
-            
+
         </div>
     );
 }
